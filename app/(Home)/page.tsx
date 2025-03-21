@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Movie from "../../components/movie";
 
 export type Movie = {
   id: number;
@@ -7,7 +8,7 @@ export type Movie = {
   release_date: string;
   vote_average: number;
   vote_count: number;
-}
+};
 export const metadata = {
   title: "Home",
 };
@@ -26,14 +27,16 @@ export default async function HomePage() {
 
   return (
     <div>
-      <div>
-        {movies.map((movie:Movie) => (
-          <div key={movie.id}>
-            <img src={movie.poster_path } alt={movie.title } />
-            <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
-          </div>
+      
+        {movies.map((movie: Movie) => (
+          <Movie
+            id={movie.id}
+            key={movie.id}
+            poster_path={movie.poster_path}
+            title={movie.title}
+          />
         ))}
       </div>
-    </div>
+    
   );
 }
