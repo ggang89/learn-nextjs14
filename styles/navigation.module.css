@@ -1,0 +1,12 @@
+.nav{
+  background-color: cadetblue;
+}
+
+/* 그냥 ul이 아니라 class 또는 ID를 포함해야 한다 */
+.nav ul{
+  display: flex;
+}
+
+/* 혹은 새로운 class 를 만들어서 적용해 줄 수 도 있다. */
+/* <ul className={styles.list}> */
+/*  .list {} */
