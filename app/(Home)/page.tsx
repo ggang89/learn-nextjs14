@@ -1,5 +1,13 @@
 import Link from "next/link";
 
+export type Movie = {
+  id: number;
+  title: string;
+  poster_path: string;
+  release_date: string;
+  vote_average: number;
+  vote_count: number;
+}
 export const metadata = {
   title: "Home",
 };
@@ -18,10 +26,14 @@ export default async function HomePage() {
 
   return (
     <div>
-      <h1>Home!</h1>
-      <div>{movies.map(movie => (
-        <li key={movie.id}><Link href={`/movies/${movie.id}`}>{movie.title}</Link></li>
-      ))}</div>
+      <div>
+        {movies.map((movie:Movie) => (
+          <div key={movie.id}>
+            <img src={movie.poster_path } alt={movie.title } />
+            <Link href={`/movies/${movie.id}`}>{movie.title}</Link>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
