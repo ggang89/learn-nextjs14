@@ -1,4 +1,4 @@
-import Link from "next/link";
+import styles from "../../styles/home.module.css";
 import Movie from "../../components/movie";
 
 export type Movie = {
@@ -26,17 +26,15 @@ export default async function HomePage() {
   const movies = await getMovies();
 
   return (
-    <div>
-      
-        {movies.map((movie: Movie) => (
-          <Movie
-            id={movie.id}
-            key={movie.id}
-            poster_path={movie.poster_path}
-            title={movie.title}
-          />
-        ))}
-      </div>
-    
+    <div className={styles.container}>
+      {movies.map((movie: Movie) => (
+        <Movie
+          id={movie.id}
+          key={movie.id}
+          poster_path={movie.poster_path}
+          title={movie.title}
+        />
+      ))}
+    </div>
   );
 }
