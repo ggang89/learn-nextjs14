@@ -5,7 +5,9 @@ import { usePathname } from "next/navigation";
 import styles from "../styles/navigation.module.css";
 
 export default function Navigation() {
+  
   const path = usePathname();
+  //console.log("path", path); // path /movies/123
  
   return (
     <nav className={styles.nav}>
@@ -14,9 +16,10 @@ export default function Navigation() {
           <Link href="/">Home</Link>
           {path === "/" ? "😀" : ""}
         </li>
+       
         <li>
-          <Link href="/about-us">About Us</Link>
-          {path === "/about-us" ? "😀" : ""}
+          <Link href="/movies">MovieDatail</Link>
+          {path.startsWith("/movies") ? "😀" : ""}
         </li>
       </ul>
     </nav>
