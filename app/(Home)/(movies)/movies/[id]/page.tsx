@@ -2,11 +2,14 @@ import { Suspense } from "react";
 import MovieInfo, { getMovie } from "../../../../../components/movie-info";
 import MovieVideos from "../../../../../components/movie-videos";
 
-type Params = Promise<{
-  id: string;
-}>;
+// type Params = Promise<{
+//   id: string;
+// }>;
+type Props = {
+  params: Promise<{ id: string }>;
+};
 
-export async function generateMetadata({ params }: { params: Params }) {
+export async function generateMetadata({ params }: Props) {
   const { id } = await params;
   const movie = await getMovie(id);
   return {
@@ -14,7 +17,7 @@ export async function generateMetadata({ params }: { params: Params }) {
   };
 }
 
-export default async function MovieDetail({ params }: { params: Params }) {
+export default async function MovieDetail({ params }: Props) {
   const { id } = await params;
 
   // suspense로 감싸서 각각 컴포넌트를 로딩하면
